@@ -1,0 +1,27 @@
+CREATE DATABASE IF NOT EXISTS filmout;
+
+USE filmout; 
+
+CREATE TABLE GENERO (
+	codigo INT(5) PRIMARY KEY, 
+	descripcion VARCHAR(45) );
+
+CREATE TABLE PELICULA (
+	codigo INT(5) PRIMARY KEY,
+	titulo VARCHAR(45),
+	codigoGenero INT(5),
+	segundaParte INT(5),
+	FOREIGN KEY (codigoGenero) REFERENCES GENERO(codigo),
+    FOREIGN KEY (segundaParte) REFERENCES PELICULA(codigo));
+
+
+INSERT INTO GENERO VALUES (1, 'Terror');
+INSERT INTO GENERO VALUES (2, 'Comedia');
+INSERT INTO GENERO VALUES (3, 'Drama');
+
+INSERT INTO PELICULA VALUES (1, 'Persona', 2, NULL);
+INSERT INTO PELICULA VALUES (2, 'Mulholland Drive', 2, NULL);
+INSERT INTO PELICULA VALUES (3, 'Midsommar', 1, NULL);
+INSERT INTO PELICULA VALUES (4, 'Hereditary', 3, NULL);
+INSERT INTO PELICULA VALUES (5, 'Magnolia', 2, 1);
+
